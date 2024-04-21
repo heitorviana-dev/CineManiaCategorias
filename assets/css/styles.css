@@ -3,3 +3,16 @@ body{
     background: #440c64;
     color: rgb(223, 218, 218);
 }
+
+#formulario{
+    display: flex;
+    flex-direction: column;
+}
+
+.labels{
+    margin: 10px;
+}
+
+button{
+    width: 100px;
+}
