@@ -9,7 +9,19 @@ class Categorias{
 
     eventSubmit(){
         this.document.addEventListener('submit', (e) => {
-            
+            // Quando o formulário for enviado será enviado um objeto com chave o genero e o valor o id
+            e.preventDefault();
+
+            if(this.validate(e)){
+                // Acessa os valores dos campos do formulário
+                const formData = new FormData(this.form);
+    
+                for (const valor of formData.entries()) {
+                    console.log(valor);
+                }
+                
+                this.form.submit(); // Os dados são enviados em forma de query Strings.
+            }
         })
     }
 
@@ -25,7 +37,6 @@ class Categorias{
         fetch(fetchGenreUrl)
             .then(response => response.json())
             .then(data => { // data é uma array em que cada elemento é um objeto contento duas chaves
-                console.log(data);
                 data.genres.forEach(genre => {
                     const {id, name} = genre;
 
@@ -49,7 +60,6 @@ class Categorias{
         input.type = 'checkbox';
         input.value = `${id}`;
 
-        console.log(input);
         return input;
     }
 
@@ -60,7 +70,6 @@ class Categorias{
         label.htmlFor = `${name}`;
         label.textContent = `${name}`;
 
-        console.log(label);
         return label;
     }
 
@@ -70,6 +79,17 @@ class Categorias{
         button.textContent = 'Enviar';
 
         return button;
+    }
+
+    validate(e){
+        const el = e.target;
+        const checkboxes = el.querySelectorAll('input[type="checkbox"]:checked');
+        
+        if(checkboxes.length < 3){
+            alert('Selecione pelo menos 3 categorias.');
+            return false;
+        }
+        return true;
     }
 }
 
