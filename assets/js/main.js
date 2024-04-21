@@ -8,7 +8,7 @@ class Categorias{
         this.eventSubmit();
     }
 
-    eventSubmit(){
+    eventSubmit(){ // Método para tratar do evento submit.
         this.document.addEventListener('submit', (e) => {
             // Quando o formulário for enviado será enviado um objeto com chave o genero e o valor o id
             e.preventDefault();
@@ -26,13 +26,13 @@ class Categorias{
         })
     }
 
-    eventContent(){
+    eventContent(){ // Método para tratar do evento DOMContentLoaded
         this.document.addEventListener('DOMContentLoaded', () => {
             this.fetchGenre();
         })
     }
 
-    fetchGenre() {
+    fetchGenre() { // Método para puxar os gêneros
         const fetchGenreUrl = `http://api.themoviedb.org/3/genre/movie/list?api_key=${this.apiKey}&language=pt-BR`;
     
         this.queryString();
@@ -54,7 +54,7 @@ class Categorias{
             }).catch(error => console.error('Erro ao buscar gêneros', error));
     }
 
-    createInput(name, id){
+    createInput(name, id){ // Método para criar o elemento input.
         const input = this.document.createElement('input');
 
         input.className = 'inputs';
@@ -66,7 +66,7 @@ class Categorias{
         return input;
     }
 
-    createLabel(name){
+    createLabel(name){ // Método para criar o elemento label.
         const label = this.document.createElement('label');
 
         label.className = 'labels';
@@ -76,7 +76,7 @@ class Categorias{
         return label;
     }
 
-    createButton(){
+    createButton(){ // Método para criar o elemento button.
         const button = this.document.createElement('button');
         button.type = 'submit';
         button.textContent = 'Enviar';
@@ -84,7 +84,7 @@ class Categorias{
         return button;
     }
 
-    validate(e){
+    validate(e){ // Método para validar as checkboxes.
         const el = e.target;
         const checkboxes = el.querySelectorAll('input[type="checkbox"]:checked');
         
@@ -95,7 +95,7 @@ class Categorias{
         return true;
     }
 
-    queryString(){
+    queryString(){ // Método para tratar das querystrings.
         const queryString = this.window.location.search; // Obtém a string de consulta da URL
         const params = new URLSearchParams(queryString);
 
