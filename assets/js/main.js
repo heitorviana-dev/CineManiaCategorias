@@ -99,9 +99,12 @@ class Categorias{
         const queryString = this.window.location.search; // Obtém a string de consulta da URL
         const params = new URLSearchParams(queryString);
 
-        params.entries().forEach(genre => {
+        params.entries().forEach(genre => { 
             console.log(genre);
         });
+
+        // params.forEach(id => {}) fazendo dessa maneira será retornado apenas o id.
+        // Da maneira escrita no código retorna uma array com o gênero e o id.
     }
 }
 
