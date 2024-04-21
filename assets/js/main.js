@@ -41,7 +41,7 @@ class Categorias{
     fetchGenre() { // Método para puxar os gêneros
         const fetchGenreUrl = `http://api.themoviedb.org/3/genre/movie/list?api_key=${this.apiKey}&language=pt-BR`;
     
-        this.queryString();
+        // this.queryString();
 
         fetch(fetchGenreUrl)
             .then(response => response.json())
@@ -101,17 +101,17 @@ class Categorias{
         return true;
     }
 
-    queryString(){ // Método para tratar das querystrings.
-        const queryString = this.window.location.search; // Obtém a string de consulta da URL
-        const params = new URLSearchParams(queryString);
+    // queryString(){ // Método para tratar das querystrings.
+    //     const queryString = this.window.location.search; // Obtém a string de consulta da URL
+    //     const params = new URLSearchParams(queryString);
 
-        params.entries().forEach(genre => { 
-            console.log(genre);
-        });
+    //     params.entries().forEach(genre => { 
+    //         console.log(genre);
+    //     });
 
-        // params.forEach(id => {}) fazendo dessa maneira será retornado apenas o id.
-        // Da maneira escrita no código retorna uma array com o gênero e o id.
-    }
+    //     // params.forEach(id => {}) fazendo dessa maneira será retornado apenas o id.
+    //     // Da maneira escrita no código retorna uma array com o gênero e o id.
+    // }
 }
 
 const categorias = new Categorias(document, window);
