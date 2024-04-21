@@ -2,7 +2,7 @@ class Categorias{
     constructor(document, window){
         this.window = window
         this.document = document;
-        this.form = this.document.querySelector('#formulario');
+        this.form = this.document.querySelector('#formPreferencia');
         this.apiKey = '5d3740a5fc6dfa4e862bede23e6d4fdb';
         this.eventContent();
         this.eventSubmit();
@@ -12,6 +12,12 @@ class Categorias{
         this.document.addEventListener('submit', (e) => {
             // Quando o formulário for enviado será enviado um objeto com chave o genero e o valor o id
             e.preventDefault();
+
+            if(e.target.id === 'formBuscador'){
+                alert("Deu certo!");
+                // Cuidar da parte da pesquisa
+                return;
+            }
 
             if(this.validate(e)){
                 // Acessa os valores dos campos do formulário
