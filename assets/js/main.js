@@ -1,5 +1,6 @@
 class Categorias{
-    constructor(document){
+    constructor(document, window){
+        this.window = window
         this.document = document;
         this.form = this.document.querySelector('#formulario');
         this.apiKey = '5d3740a5fc6dfa4e862bede23e6d4fdb';
@@ -34,6 +35,8 @@ class Categorias{
     fetchGenre() {
         const fetchGenreUrl = `http://api.themoviedb.org/3/genre/movie/list?api_key=${this.apiKey}&language=pt-BR`;
     
+        this.queryString();
+
         fetch(fetchGenreUrl)
             .then(response => response.json())
             .then(data => { // data é uma array em que cada elemento é um objeto contento duas chaves
@@ -91,6 +94,15 @@ class Categorias{
         }
         return true;
     }
+
+    queryString(){
+        const queryString = this.window.location.search; // Obtém a string de consulta da URL
+        const params = new URLSearchParams(queryString);
+
+        params.entries().forEach(genre => {
+            console.log(genre);
+        });
+    }
 }
 
-const categorias = new Categorias(document);
+const categorias = new Categorias(document, window);
