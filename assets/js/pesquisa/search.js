@@ -30,20 +30,6 @@ class Search{
         });
     }
 
-    // eventSubmit(){ // Método para tratar do evento submit.
-    //     this.document.addEventListener('submit', (e) => {
-    //         // Quando o formulário for enviado será enviado um objeto com chave o genero e o valor o id
-    //         e.preventDefault();
-
-    //         if(e.target.id === 'formBuscador'){
-    //             const dados = e.target.querySelector('#search').value;
-    //             this.window.location.href = "pesquisa.html?dados=" + encodeURIComponent(dados);
-
-    //             return;
-    //         }
-    //     });
-    // }
-
     getParams(){
         // Retornar o nome do filme pra colocar na url
         const params = new URLSearchParams(this.window.location.search);
