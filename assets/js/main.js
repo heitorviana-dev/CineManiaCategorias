@@ -1,9 +1,10 @@
 class Categorias{
-    constructor(document, window){
-        this.window = window
+    constructor(document, window, language){
+        this.window = window;
         this.document = document;
         this.form = this.document.querySelector('#formPreferencia');
         this.apiKey = '5d3740a5fc6dfa4e862bede23e6d4fdb';
+        this.language = language;
         this.eventContent();
         this.eventSubmit();
     }
@@ -39,7 +40,7 @@ class Categorias{
     }
 
     fetchGenre() { // Método para puxar os gêneros
-        const fetchGenreUrl = `http://api.themoviedb.org/3/genre/movie/list?api_key=${this.apiKey}&language=pt-BR`;
+        const fetchGenreUrl = `http://api.themoviedb.org/3/genre/movie/list?api_key=${this.apiKey}&language=${this.language}`;
     
         // this.queryString();
 
@@ -114,4 +115,4 @@ class Categorias{
     // }
 }
 
-const categorias = new Categorias(document, window);
+const categorias = new Categorias(document, window, localStorage.getItem('language'));

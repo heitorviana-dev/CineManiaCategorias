@@ -15,10 +15,14 @@ class Navbar{
             const search = this.createLink(null, null, null, 'buscador');
             const entrar = this.createLink('#login', null, 'Entrar');
             const registrar = this.createLink('#registrar', null, 'Registrar-se');
+            const buttonPortugues = this.createButton('button', 'btnPortugues', 'btnLanguage', 'Português');
+            const buttonEnglish = this.createButton('button', 'btnIngles', 'btnLanguage', 'Inglês');
 
             this.ul.appendChild(cinemania);
             this.ul.appendChild(lancamentos);
             this.ul.appendChild(categorias);
+            this.ul.appendChild(buttonPortugues);
+            this.ul.appendChild(buttonEnglish);
             this.ul.appendChild(search);
             this.ul.appendChild(entrar);
             this.ul.appendChild(registrar);
@@ -35,7 +39,7 @@ class Navbar{
             const formBuscador = this.createForm('/', 'get', 'formBuscador');
             const label = this.createLabel('Search: ', 'search');
             const buscador = this.createInput('search');
-            const button = this.createButton('botaoPesquisa');
+            const button = this.createButton('submit', 'botaoPesquisa');
 
             label.appendChild(buscador);
 
@@ -47,10 +51,13 @@ class Navbar{
 
             return li;
         }
+
         const a = this.document.createElement('a');
+
         if(classe){
             a.classList.add(`${classe}`);
         }
+
         a.setAttribute('href', `${href}`);
         a.textContent = `${content}`;
 
@@ -78,10 +85,21 @@ class Navbar{
         return input;
     }
 
-    createButton(id){ // Método para criar o elemento button.
+    createButton(type, id, classe, content = null){ // Método para criar o elemento button.
         const button = this.document.createElement('button');
-        button.type = 'submit';
-        button.id = `${id}`;
+        button.type = `${type}`;
+
+        if(id){
+            button.id = `${id}`;
+        }
+
+        if(content){
+            button.textContent = content;
+        }
+
+        if(classe){
+            button.classList.add(`${classe}`);
+        }
 
         return button;
     }
