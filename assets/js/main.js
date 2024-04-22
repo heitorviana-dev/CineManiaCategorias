@@ -15,8 +15,9 @@ class Categorias{
             e.preventDefault();
 
             if(e.target.id === 'formBuscador'){
-                alert("Deu certo!");
-                // Cuidar da parte da pesquisa
+                const dados = e.target.querySelector('#search').value;
+                this.window.location.href = "pesquisa.html?dados=" + encodeURIComponent(dados);
+
                 return;
             }
 

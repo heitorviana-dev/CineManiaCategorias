@@ -3,13 +3,15 @@
 class Navbar{
     constructor(document){
         this.document = document;
+        this.window = window;
         this.ul = document.querySelector('#navbar');
         this.eventContent();
+        this.eventSubmit();
     }
 
     eventContent(){ // Método para tratar do evento DOMContentLoaded
         this.document.addEventListener('DOMContentLoaded', () => {
-            const cinemania = this.createLink('#home', 'active', 'CineMania');
+            const cinemania = this.createLink('index.html', 'active', 'CineMania');
             const lancamentos = this.createLink('#lancamentos', null, 'Lançamentos');
             const categorias = this.createLink('#categorias', null, 'Categorias');
             const search = this.createLink(null, null, null, 'buscador');
@@ -30,13 +32,27 @@ class Navbar{
         })
     }
 
+    eventSubmit(){ // Método para tratar do evento submit.
+        this.document.addEventListener('submit', (e) => {
+            // Quando o formulário for enviado será enviado um objeto com chave o genero e o valor o id
+            e.preventDefault();
+
+            if(e.target.id === 'formBuscador'){
+                const dados = e.target.querySelector('#search').value;
+                this.window.location.href = "pesquisa.html?dados=" + encodeURIComponent(dados);
+
+                return;
+            }
+        });
+    }
+
     createLink(href, classe, content, id = null){
         const li = this.document.createElement('li');
 
         if(id){
             li.setAttribute('id', id);
 
-            const formBuscador = this.createForm('/', 'get', 'formBuscador');
+            const formBuscador = this.createForm('pesquisa.html', 'get', 'formBuscador');
             const label = this.createLabel('Search: ', 'search');
             const buscador = this.createInput('search');
             const button = this.createButton('submit', 'botaoPesquisa');
@@ -47,7 +63,6 @@ class Navbar{
             formBuscador.appendChild(button);
 
             li.appendChild(formBuscador);
-
 
             return li;
         }
@@ -81,6 +96,7 @@ class Navbar{
 
         input.id = `${id}`;
         input.type = 'text';
+        input.name = 'dados';
 
         return input;
     }
@@ -115,4 +131,4 @@ class Navbar{
     }
 }
 
-const navbar = new Navbar(document);
+const navbar = new Navbar(document, window);

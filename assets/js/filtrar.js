@@ -1,7 +1,7 @@
 const apiKey = '5d3740a5fc6dfa4e862bede23e6d4fdb'; // Substituam 'a chave de vcs aqui para não extourar o limite da API do TMDB' 
 
 
-const apiUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=pt-BR&sort_by=popularity.desc`;
+const apiUrl = `https://api.themoviedb.org/3/search/movie?query=White+Chicks&api_key=${apiKey}`;
 
 document.addEventListener('DOMContentLoaded', () => {
     fetch(apiUrl)

@@ -4,31 +4,22 @@
  <title>Catálogo de Filmes</title>
  <link rel="stylesheet" href="../assets/css/filtro.css">
  <link rel="stylesheet" href="../assets/css/stylecardmovie.css">
+ <link rel="stylesheet" href="../assets/css/styles.css">
 </head>
 <body>
-  <h1>Catálogo de Filmes</h1>
-  <div class="input-container">
-    <input type="text" id="searchInput" placeholder="Pesquisar filme...">
-    <button id="searchButton">Pesquisar</button>
-  </div>
-  <div class="filters">
-    <select id="genreFilter">
-      <option value="">Selecione o gênero</option>
-      <!-- Opções de gênero serão preenchidas dinamicamente -->
-    </select>
-    <select id="streamingTypeFilter">
-      <option value="">Selecione o tipo de streaming</option>
-      <option value="movie">Filme</option>
-      <option value="tv">Série</option>
-    </select>
-    <input type="number" id="yearFilter" placeholder="Ano de lançamento">
-  </div>
+  <nav>
+    <ul id="navbar">
+        <!-- Navbar -->
+    </ul>
+  </nav>
 
   <div class="container">
     <h1>Resultados</h1>
     <div id="movie-cards" class="movie-cards"></div>
   </div>
 
-  <script src="../assets/js/filtrar.js"></script>
+  <script src="../assets/js/pesquisa/search.js"></script>
+  <script src="../assets/js/navbar.js"></script>
+  <script src="../assets/js/localStorage.js"></script>
 </body>
 </html>
